@@ -1,0 +1,57 @@
+Édio Cerati Neto
+NUSP 9762678
+
+Guilherme Yambanis Thomaz
+NUSP 8041265
+
+Raul dos Reis Soares
+NUSP 8535596
+
+Foi Implementado as seguintes funcoes e crado o codigo modularizado:
+
+    celula mover(struct celula cel[100][100], struct celula celA, int direcao, int size);
+
+    int recolhe(struct celula cel[100][100], struct celula celA, int direcao);
+
+    void deposita(struct celula cel[100][100], struct celula celA, int direcao);
+
+    void ataque(struct celula cel[100][100], struct celula celA, int direcao);
+
+    int checaVizinho(struct celula celA, struct celula celB);
+
+    celula calculaDirecao(struct celula celA, int direcao);
+
+    void generateArena(int size, struct celula cel[100][10
+
+    void imprimeCristais(struct celula cel[100][100], int size);
+
+    void imprimeTerreno(struct celula cel[100][100], int size);
+
+    void imprimeVizinhos(struct celula cel[100][100], struct celula celA, int size);
+
+    void insereExercito(struct celula cel[100][100], struct celula celA);
+
+    void removeExercito(struct celula cel[100][100], struct celula celA);
+
+O maior desafio esteve em criar a matriz hexagonal. optei por um modelo offset,
+que se mostrou facil de implementar porem um tanto quanto complexo, principalmente,
+na hora de calcular direcao e vizinhos, requerendo um certo trabalho para determinar
+a adjacencia de duas celulas.
+Tambem foi um pouco desafiador acostumar com algumas nocoes de C que nao estava muito familiarizado,
+como Struct e modularizacao em .h
+Procurei comentar bastante o codigo das funcoes, principalmente as de calculo de direcao
+e de vizinhancas, ja que nao sao triviais nem intuitivas.
+Funcoes com caracteristicas mais obvias nao tiveram tanta atencao aos comentarios por
+serem de facil entendimento.
+
+O Makefile utilizado ainda nao esta funcionando perfeitamente,
+pois esta ocorrendo algum erro na definicao das funcoes, que sao
+acusadas pelo compilador como ja definidas. Pesquisaremos melhor
+como isso deve ser consertado e como melhorar a modularizacao.
+
+A máquina virtual foi reestruturada para que o Operando seja uma struct que contém o campo de tipo e o campo de valor.
+Por enquanto a máquina virtual reconhece dois tipos de operandos diferentes: Celula e números. Toda vez que é retiada uma atribuição de uma célula
+a mesma se torna um número, para facilitar o uso das fuções.
+
+Problemas a serem corrigidos na próxima etapa:
+Tivemos problemas para intregar a máquina virtual com o módulo da arena (talvez por mal entendimento do enunciado ou por implementação errada).
