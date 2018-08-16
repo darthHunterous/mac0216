@@ -121,3 +121,89 @@
              dec %cx         # contador -= 1   
              jnz inicio
     ```
+<br><br>
+* **Data Transfer Command - MOV**
+    * Copies the value in the second operand to the first one without altering content in the second
+    * Leftmost operand is the second one
+    * **Formats**
+        * mov reg|mem|const, reg
+        * mov reg|const, mem
+    * **Symbols meaning**
+        * *reg*
+            * register
+        * *mem*
+            * Memory position
+            * Can be a constant like [1000] or a indicated through a register [EBX]
+        * *const*
+            * Constant value
+    * **Examples**
+        * **Correct**
+            * mov $-14, %ah
+            * mov $36h, %ax
+            * mov 'a', %al
+            * mov %eax, %ebx
+            * mov $1000, %bx
+            * mov %ax, (%ebx)
+            * mov %ax, 1000
+            * mov %ax, 1000(%ebx)
+            * mov (1000), %ax
+            * movl $0x36, (1000)
+        * **Incorrect Uses**
+            * *mov $999, %al*
+                * 999 can't be stored in 8 bits
+            * *mov %ebx, %dx*
+                * Aren't registers of the same size
+            * *mov (%ebx), 1000*
+                * Data can't be trasnferred between memory positions directly
+    * **No Size Ambiguity Cases**
+        * Occurs between *mem* and *reg*
+        * Words manipulated in memory is set by the size of the register
+            * Example
+                * mov 1000, %ax
+                * Copies 2 words from memory (in positions 1000 and 1001) because *ax** has 16 bits size
+    * **Size Ambiguity Cases**
+        * Between *mem* and *const* operands
+        * mov $5, %ebx
+        * Ammount of manipulated words:
+            * Determined by the architecture (16, 32 or 64 bits)
+            * Notation use to determine the bytes ammount
+                * movb $5, %ebx  # 8 bits
+                * movw $5, %ebx  # 16 bits
+                * movd $5, %ebx  # 32 bits
+                * movq $5, %ebx  # 64 bits
+<br><br>
+* **Exchange Data Command - xcgh**
+    * Swap the operands values
+    * xcgh reg|mem, reg
+    * xcgh reg, mem
+    * **Examples**
+        * xchg %ah, %bl
+        * xchg %bl, (%ah)
+        * xchg %ah, (%ebx)
+<br><br>
+* **Sum - ADD**
+    * Sums the second operand with the first, storing in the first
+    * add reg|mem|const, reg
+    * **Examples**
+        * add $10, %bl &nbsp;# bl += 10
+        * add %al, %bl &nbsp;# bl += al
+        * add ($1000), %bl &nbsp;# bl += (1000)
+            * bl gets summed with the value in position 1000 in the memory
+<br><br>
+* **Subtraction - SUB**
+    * Subtracts the value in the second operand from the first, storing in the first
+    * sub reg|mem|const, reg
+<br><br>
+* **Increase and Decrease - INC and DEC**
+    * Increase or decrease the operand value by 1
+    * inc reg|mem
+    * dec reg|mem
+    * **Examples**
+        * inc %cx # cx += 1
+        * dec %cx # cx -= 1
+<br><br>
+* **Useful Links**
+    * Chapters 03, 04 and 06 of *Linux Assembly Language Programming*
+        * B. Neveln
+    * [Book *The Art of Assembly Language Programming*](http://cs.smith.edu/~thiebaut/ArtOfAssembly/artofasm.html)
+        * R. Hyde
