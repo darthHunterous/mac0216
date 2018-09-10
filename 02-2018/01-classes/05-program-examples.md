@@ -67,19 +67,64 @@
            mov  var1, %eax   # copies to EAX the value of var1, 0x0f17
 <br><br>
 * **Differences Between AT&T and Intel Syntaxes**
-    | Function             | AT&T                    | Intel                   |
-    |:--------------------:|:-----------------------:|:-----------------------:|
-    | *Operand Order*        | MOV origin, destination | MOV destination, origin |
-    | *Variable Declaration* | var1: .int value        | var2: DB value          |
-    | *Constant Declaration* | const1 = value          | const2: EQU value       |
-    | *Register Use*         | MOV %eax, %ebx          | MOV ebx, eax            |
-    | *Variable Use*         | MOV $var1, %eax         | MOV eax, var2           |
-    | *Constant Use*         | MOV $const1, %eax       | MOV eax, const2         |
-    | *Immediate Use*        | MOV $57, %eax           | MOV eax, 57             |
-    | *Hex Numbers*          | MOV $0xFF, %eax         | MOV eax, 0FFh           |
-    | *Size of Operations*   | MOVB [ebx], %al         | MOV al, byte [ebx]      |
-    | *Comment Delimiter*    | # comment in AT&T       | ; comment in Intel      |
-<br><br>
+<table>
+    <tr>
+        <th>Function</th>
+        <th>AT&T</th>
+        <th>Intel</th>
+    </tr>
+    <tr>
+        <td><em>Operand Order</em></td>
+        <td>MOV origin, destination</td>
+        <td>MOV destination, origin</td>
+    </tr>
+    <tr>
+        <td><em>Variable Declaration</em></td>
+        <td>var1: .int value</td>
+        <td>var2: DB value</td>
+    </tr>
+    <tr>
+        <td><em>Constant Declaration</em></td>
+        <td>const1 = value</td>
+        <td>const2: EQU value</td>
+    </tr>
+    <tr>
+        <td><em>Register Use</em></td>
+        <td>MOV %eax, %ebx</td>
+        <td>MOV ebx, eax</td>
+    </tr>
+    <tr>
+        <td><em>Variable Use</em></td>
+        <td>MOV $var1, %eax</td>
+        <td>MOV eax, var2</td>
+    </tr>
+    <tr>
+        <td><em>Constant Use</em></td>
+        <td>MOV $const1, %eax</td>
+        <td>MOV eax, const2</td>
+    </tr>
+    <tr>
+        <td><em>Immediate Use</em></td>
+        <td>MOV $57, %eax</td>
+        <td>MOV eax, 57</td>
+    </tr>
+    <tr>
+        <td><em>Hex Numbers</em></td>
+        <td>MOV $0xFF, %eax</td>
+        <td>MOV eax, 0FFh</td>
+    </tr>
+    <tr>
+        <td><em>Size of Operations</em></td>
+        <td>MOVB [ebx], %al</td>
+        <td>MOV al, byte [ebx]</td>
+    </tr>
+    <tr>
+        <td><em>Comment Delimiter</em></td>
+        <td># comment in AT&T</td>
+        <td>; comment in Intel</td>
+    </tr>
+</table>
+
 * **Exercises**
     * **01**
         * Program that reads a text from StdIn and outputs it in capital letters to StdOut
