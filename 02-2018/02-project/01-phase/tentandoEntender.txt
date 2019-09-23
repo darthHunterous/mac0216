@@ -1,0 +1,179 @@
+Mundo composto por elementos (structs)
+                    |
+                    |       |---- Lugares
+                    |       |
+                    |---------- ou
+                            |
+                            |----- Objetos
+
+
+Temos tambem Saidas (campo de Lugar, ponteiro para Lugar)
+e Verbos (ações possiveis).
+
+
+---> Elementos
+
+    * Deve conter um nome interno, um ou mais apelidos, uma descrição longa e uma descrição curta
+
+        * Apelidos : indicão como o usuário se referencia ao 
+        elemento. Ex : gato, apelido : "gt" e "gato".
+
+    --> PROPRIEDADES DE OBJETOS E LUGARES (ELEMENTOS) : 
+        - entre parentesis : nome do campo na struct.
+
+        * nome : Identificação interna do elemento
+
+        * Artigos (artigos) : mostra todos artigos (ex : "o do um dum")
+
+        *Descrição longa (longa) : descreve o elemento, quando o usuario pede pra examinar o objeto.
+
+        *Descrição curta (curta)
+
+        *Lista de objetos (contem)  : Lista dos objetos presentes no lugar ou CONTIDOS no objeto 
+
+        *Atributos : valores genericos para especificar melhor o estado
+
+        *Ação (acao) : VERBO que tem significado especial neste
+        LUGAR ou Neste OBJETO. Pode haver mais de um, é opcional
+        para os elementos ou lugares.
+
+        *Animação (animacao) : verbo especial que permite 
+        animaçãoes.
+
+
+        --> LUGARES 
+
+            Possuem uma propriedade adicional : 
+
+            * Saída (saida) : Conexão para outro Lugar. Direções possiveis pelos apelidos de cada saida
+
+                *Saidas ligam um LUGAR a outro. É um caso 
+                especial  de OBJETO, possui duas propriedades a mais : 
+
+                    * Destino (destino) : referencia para o 
+                    LUGAR onde ela leva
+
+                    *Fechada (fechada) : indica que a SAIDA esta 
+                    fechada
+
+        --> OBJETOS : 
+
+            * Alem das propriedades dos elementos, os objetos possuem : 
+
+                * Adjetivos (adjetivos) : lista adicional com 
+                adjetivos que permitem especificar melhor o 
+                OBJETO.
+
+                * Invisível (invisivel) : indicação especial 
+                para objetos que estão escondidos no início do 
+                jogo
+
+                * Os objetos possuem ações GENERICAS (verbos) :
+
+                    * examinar : descreve o objeto
+                    
+                    * pegar : Pega o objeto para o aventureiro, se possível 
+
+                    * largar : larga o objeto, QUE NECESSARIAMENTE ESTÁ COM O AVENTUREIRO
+
+                * objetos tambem tem ações mais especificas, ex :
+
+                    * destruir
+                    * esfregar
+                    * ligar
+                    ...
+
+
+----> VERBOS
+
+    * Função que atua sobre elementos. Será util para as proximas fases.
+
+----> aventureiro
+
+    * Caso específico de OBJETO ANIMADO, pode conter outros 
+    OBJETOS, recebe atualização direta do usuario.
+
+    * Pode ter algumas atualizações automaticas, como cansaço, fome...
+
+----> Implementação Básica : 
+
+    * Estruturas fundamentais : Hash Table (Liga nomes a 
+    ELEMENTOS) e listas
+
+    -> Tabela de Símbolos (hash Table) : 
+
+        -> Chave = string, valor = Ponteiro Generico.
+
+        -> TabSim cria (int tam) -- cria tabela com tam entradas
+
+        -> void destroi (TabSim t) -- destroi a tabela t
+
+        -> int insere (TabSim t, char *n, Elemento * val) 
+
+            Insere o nome n na tabela t e associa com o valor 
+            val. Retorna um codigo de erro, avaliando o sucesso 
+            da inserção
+
+        -> Elemento *busca(TabSim t, char * n) -- retorna o valor 
+        associado a n na tabela t, retorna NULL caso não 
+        encontre.
+
+        ->int retira (TabSim t, char *n) -- remove o valor n da 
+        tabela n, LIBERANDO A MEMORIA
+
+    -> Lista de Valores : 
+
+        -> Listas Ligadas.
+
+        -> Lista Cria () : Cria Lista Vazia.
+
+        -> void destroi (Lista l) -- destroi a lista l
+
+        -> Lista insere (lista L, Elemento*val) -- insere o valor 
+        val na lista l e retorna o endereço do elemento inserido,
+        ou Null em caso de erro
+
+        -> Elemento * busca (lista l, char * n) : Busca o elemento 
+        na lista ligada. Retorna NULL caso não encontre.
+
+        > Elemento * retira (Lista l, Elemento * val) : remove
+        o elemento val da tabela SEM REMOVE-LO DA MEMORIA.
+
+
+----> Programa da primeira fase : 
+
+    > Deve conter os módulos com as estruturas acimas e um modulo
+    adicional para testes. ****Todas as funções devem ser 
+    testadas em várias situações *****.
+
+    > devemos entregar um relatório.
+
+
+----> SUGESTÕES : 
+
+    > definir um struct para elementos, 
+
+    typedef struct {
+        char n[80];
+    } Elemento;
+
+    Lista Ligada : Pratico ter um estrutura separada para a 
+    cabeça da lista.
+
+    typedef struct elo {
+        struct elo * next ;
+        Elemento * val ;
+    } Elo ;
+
+    typedef struct {
+        Elo * cabec ;
+    } Lista ;
+
+
+
+
+
+
+    
+
+

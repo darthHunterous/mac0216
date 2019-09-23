@@ -1,0 +1,28 @@
+Projeto : Aventura! Parte 1
+
+Grupo : 
+
+    Caio Túlio de Deus Andrade - 9797232
+    Édio Cerati Neto - 9762678
+    Leandro Rodrigues -  10723944
+
+
+Como rodar o programa : 
+
+    Usamos a separação de arquivos interface-cliente-implementação
+    para o projeto. Então fizemos uma implementaçao para Listas 
+    ligadas (lista.c), uma implementaçao para a hash table
+    (tabsim.c), uma interface para as estruturas gerais
+    (estruturas.h) e um cliente de testes (testes.c).
+
+    Para utilizar o cliente de testes, basta compilar com make e rodar o executável gerado, com ./testes
+
+Problemas encontrados : 
+
+    Algumas dificuldades foram encontradas quanto à criação e manipulação
+    das Listas ligadas e da tabela de símbolos. Foi confuso compreender algumas
+    instruções e especificações propostas pelo enunciado que se solucionaram
+    através da seção de dúvidas do PACA.
+
+
+    
